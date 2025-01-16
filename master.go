@@ -15,7 +15,7 @@ func Cls() {
 }
 
 // -------------- Get a Charakter forom keybord -----------------
-func CharakterheckKey() byte {
+func CharGetKey() byte {
 
 	// فعال کردن حالت خام (Raw Mode)
 	oldState, err := term.MakeRaw(int(os.Stdin.Fd()))
