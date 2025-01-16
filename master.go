@@ -1,4 +1,4 @@
-package master
+package Master_Function
 
 import (
 	"os"
