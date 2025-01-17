@@ -1,4 +1,4 @@
-module master.go
+module github.com/Asri-Mohamad/Master_Function
 
 go 1.22.2
 
