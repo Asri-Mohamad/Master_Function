@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/fatih/color"
 	"golang.org/x/term"
 )
 
@@ -33,4 +34,27 @@ func CharGetKey() byte {
 		return 'e'
 	}
 	return key[0]
+}
+
+// ------------------------ Set color ------------------------------
+func SetColor(name string) func(...interface{}) string {
+	var c color.Attribute
+	switch name {
+	case "blue", "Blue":
+		c = color.FgBlue
+	case "read", "Read":
+		c = color.FgRed
+	case "green", "Green":
+		c = color.FgGreen
+	case "yellow", "Yellow":
+		c = color.FgYellow
+	case "pinc", "Pinc":
+		c = color.FgHiMagenta
+
+	default:
+		c = color.FgWhite
+	}
+
+	return color.New(c).SprintFunc()
+
 }
