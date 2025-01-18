@@ -1,10 +1,10 @@
 package Master_Function
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 
-	"github.com/fatih/color"
 	"golang.org/x/term"
 )
 
@@ -37,24 +37,30 @@ func CharGetKey() byte {
 }
 
 // ------------------------ Set color ------------------------------
-func SetColor(name string) func(...interface{}) string {
-	var c color.Attribute
-	switch name {
-	case "blue", "Blue":
-		c = color.FgBlue
+func ColorText(c string, text string) string {
+	var colorCodeGet string
+	switch c {
+	case "Black", "black":
+		colorCodeGet = "30"
 	case "read", "Read":
-		c = color.FgRed
+		colorCodeGet = "31"
 	case "green", "Green":
-		c = color.FgGreen
+		colorCodeGet = "32"
 	case "yellow", "Yellow":
-		c = color.FgYellow
-	case "pinc", "Pinc":
-		c = color.FgHiMagenta
+		colorCodeGet = "33"
+	case "blue", "Blue":
+		colorCodeGet = "34"
+	case "Magenta", "magenta":
+		colorCodeGet = "35"
+	case "cyan", "Cyan":
+		colorCodeGet = "36"
+	case "Reset", "reset":
+		colorCodeGet = "0"
 
 	default:
-		c = color.FgWhite
+		colorCodeGet = "0"
 	}
 
-	return color.New(c).SprintFunc()
+	return fmt.Sprintf("\033[%sm%s\033[0m", colorCodeGet, text)
 
 }
